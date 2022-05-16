@@ -5,9 +5,9 @@ import { User } from "../../../models/index.js";
 const usersRouter = new express.Router();
 
 usersRouter.post("/", async (req, res) => {
-  const { email, password, passwordConfirmation } = req.body;
+  const { firstName, lastName, userName, email, password, passwordConfirmation } = req.body;
   try {
-    const persistedUser = await User.query().insertAndFetch({ email, password });
+    const persistedUser = await User.query().insertAndFetch({ firstName, lastName, userName, email, password });
     return req.login(persistedUser, () => {
       return res.status(201).json({ user: persistedUser });
     });
@@ -16,5 +16,15 @@ usersRouter.post("/", async (req, res) => {
     return res.status(422).json({ errors: error });
   }
 });
+
+usersRouter.get('/:id', async (req, res) => {
+  const id = req.params.id
+  try {
+    const user = await User.query().findById(id)
+    res.status(200).json({ user })
+  } catch (error) {
+    res.status(500).json({ error })
+  }
+})
 
 export default usersRouter;

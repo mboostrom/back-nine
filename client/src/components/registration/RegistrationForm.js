@@ -4,6 +4,9 @@ import config from "../../config";
 
 const RegistrationForm = () => {
   const [userPayload, setUserPayload] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
     email: "",
     password: "",
     passwordConfirmation: "",
@@ -15,13 +18,34 @@ const RegistrationForm = () => {
 
   const validateInput = (payload) => {
     setErrors({});
-    const { email, password, passwordConfirmation } = payload;
-    const emailRegexp = config.validation.email.regexp;
+    const { firstName, lastName, userName, email, password, passwordConfirmation } = payload;
+    const emailRegexp = config.validation.email.regexp.emailRegex;
     let newErrors = {};
     if (!email.match(emailRegexp)) {
       newErrors = {
         ...newErrors,
         email: "is invalid",
+      };
+    }
+
+    if (firstName.trim() == "") {
+      newErrors = {
+        ...newErrors,
+        firstName: "is required",
+      };
+    }
+
+    if (lastName.trim() == "") {
+      newErrors = {
+        ...newErrors,
+        lastName: "is required",
+      };
+    }
+
+    if (firstName.trim() == "") {
+      newErrors = {
+        ...newErrors,
+        userName: "is required",
       };
     }
 
@@ -89,6 +113,27 @@ const RegistrationForm = () => {
     <div className="grid-container">
       <h1>Register</h1>
       <form onSubmit={onSubmit}>
+      <div>
+          <label>
+            First Name
+            <input type="text" name="firstName" value={userPayload.firstName} onChange={onInputChange} />
+            <FormError error={errors.firstName} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Last Name
+            <input type="text" name="lastName" value={userPayload.lastName} onChange={onInputChange} />
+            <FormError error={errors.lastName} />
+          </label>
+        </div>
+        <div>
+          <label>
+            username
+            <input type="text" name="userName" value={userPayload.userName} onChange={onInputChange} />
+            <FormError error={errors.userName} />
+          </label>
+        </div>
         <div>
           <label>
             Email
