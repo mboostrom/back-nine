@@ -1,6 +1,7 @@
 import React from "react"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
+import GolfRoundTile from "./GolfRoundTile"
 
 const UserShow = (props) => {
   const [profile, setProfile] = useState({
@@ -20,7 +21,7 @@ const UserShow = (props) => {
         throw error
       }
       const responseBody = await response.json()
-      setProfile(responseBody.user)
+      setProfile(responseBody.serializedUser)
     } catch (error) {
       console.log(`Error in fetch: ${error.message}`)
     }
@@ -30,9 +31,14 @@ const UserShow = (props) => {
     fetchProfile()
   }, [])
 
+  const golfRounds = profile.golfRounds.map((round) => {
+    return <GolfRoundTile key={round.id} round={round} />
+  })
+
   return (
     <div>
       <h1>{profile.userName}</h1>
+      <div>{golfRounds}</div>
     </div>
   )
 }
