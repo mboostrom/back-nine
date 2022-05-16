@@ -6,7 +6,7 @@ const Model = require("./Model");
 const saltRounds = 10;
 
 const uniqueFunc = unique({
-  fields: ["email"],
+  fields: ["email", "userName"],
   identifiers: ["id"],
 });
 
@@ -26,11 +26,14 @@ class User extends uniqueFunc(Model) {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["email"],
+      required: ["email", "firstName", "lastName", "userName"],
 
       properties: {
         email: { type: "string", format: "email" },
         cryptedPassword: { type: "string" },
+        firstName: { type: "string" },
+        lastName: { type: "string" },
+        userName: { type: "string" },
       },
     };
   }
@@ -43,6 +46,21 @@ class User extends uniqueFunc(Model) {
     }
 
     return serializedJson;
+  }
+
+  static get relationMappings() {
+    const GolfRound = require("./GolfRound.js");
+
+    return {
+      golfRounds: {
+        relation: Model.HasManyRelation,
+        modelClass: GolfRound,
+        join: {
+          from: "users.id",
+          to: "golfRounds.userId",
+        },
+      },
+    };
   }
 }
 
