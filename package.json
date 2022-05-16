@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace back-nine-client build",
+    "dev": "yarn workspace back-nine-server dev",
+    "dev:debug": "yarn workspace back-nine-server dev:debug",
+    "heroku-postbuild": "yarn workspace back-nine-client build",
+    "start": "yarn workspace back-nine-server start",
+    "dev:cypress": "yarn workspace back-nine-server dev:e2e",
+    "e2e:open": "yarn workspace back-nine-e2e e2e:open",
+    "e2e:run": "yarn workspace back-nine-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^14.19"
+  }
+}
