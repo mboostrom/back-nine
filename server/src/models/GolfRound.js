@@ -13,7 +13,7 @@ class GolfRound extends Model {
       properties: {
         holesPlayed: { type: ["integer", "string"] },
         score: { type: ["integer", "string"] },
-        coursePlayed: { type: ["integer", "string"] },
+        coursePlayed: { type: "string" },
       },
     };
   }
