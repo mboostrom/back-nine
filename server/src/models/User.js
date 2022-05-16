@@ -47,6 +47,21 @@ class User extends uniqueFunc(Model) {
 
     return serializedJson;
   }
+
+  static get relationMappings() {
+    const GolfRound = require("./GolfRound.js");
+
+    return {
+      golfRounds: {
+        relation: Model.HasManyRelation,
+        modelClass: GolfRound,
+        join: {
+          from: "users.id",
+          to: "golfRounds.userId",
+        },
+      },
+    };
+  }
 }
 
 module.exports = User;
