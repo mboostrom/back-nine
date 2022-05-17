@@ -1,0 +1,45 @@
+.top-bar {
+  height: 8em;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.sign-button {
+  background-color: #6d7833 !important;
+  width: 7em;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bold;
+  border-radius: 16px;
+}
+
+.nav-link{
+  font-size: 1.3em;
+  text-align: center;
+  font-weight: bold;
+  color: #6d7833 !important;
+}
+
+.back{
+  color: #374108;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.nine{
+  color: #8ABC50;
+  font-size: 3em;
+  font-weight: bold;
+  margin-right: 1em;
+}
+
+.home{
+  border-right: .5px solid #374108;
+}
+
+.profile{
+  margin-left: 2em;
+  display: flex;
+  align-items: center;
+}
