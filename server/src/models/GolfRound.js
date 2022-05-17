@@ -8,18 +8,18 @@ class GolfRound extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["holesPlayed", "score", "coursePlayed"],
+      required: ["holesPlayed", "score"],
 
       properties: {
         holesPlayed: { type: ["integer", "string"] },
         score: { type: ["integer", "string"] },
-        coursePlayed: { type: "string" },
       },
     };
   }
 
   static get relationMappings() {
     const User = require("./User.js");
+    const Course = require('./Course.js')
 
     return {
       user: {
@@ -30,6 +30,14 @@ class GolfRound extends Model {
           to: "users.id",
         },
       },
+      course: {
+        realtion: Model.BelongsToOneRelation,
+        modelClass: Course,
+        join: {
+          from: "golfRound.courseId",
+          to: "courses.id"
+        }
+      }
     };
   }
 }
