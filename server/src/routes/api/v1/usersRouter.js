@@ -2,6 +2,7 @@ import express from "express"
 import passport from "passport"
 import { User } from "../../../models/index.js"
 import UserSerializer from "../../../serializers/UserSerializer.js"
+import userRoundRouter from "./userRoundRouter.js"
 
 const usersRouter = new express.Router()
 
@@ -34,5 +35,7 @@ usersRouter.get("/:id", async (req, res) => {
     res.status(500).json({ error })
   }
 })
+
+usersRouter.use('/:userId/golfRound', userRoundRouter)
 
 export default usersRouter
