@@ -11,6 +11,8 @@ const UserShow = (props) => {
     golfRounds: [],
   })
 
+  const [courses, setCourses] = useState([])
+
   const params = useParams()
   const userId = params.id
   const fetchProfile = async () => {
@@ -27,8 +29,23 @@ const UserShow = (props) => {
     }
   }
 
+  const fetchCourses = async () => {
+    try {
+      const response = await fetch('/api/v1/courses')
+      if (!response.ok) {
+        const error = new Error(`${response.status} (${response.statusText})`)
+        throw error
+      }
+      const responseBody = await response.json()
+      setCourses(responseBody.courses)
+    } catch (error) {
+      console.log(`Error in fetch: ${error.message}`)
+    }
+  }
+
   useEffect(() => {
-    fetchProfile()
+    fetchProfile(),
+    fetchCourses()
   }, [])
 
   const golfRounds = profile.golfRounds.map((round) => {

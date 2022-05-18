@@ -6,20 +6,32 @@ class GolfRoundSeeder {
       {
         holesPlayed: 18,
         score: 82,
-        coursePlayed: "Swansea Country Club",
         userId: 1,
+        courseId: 3,
       },
       {
         holesPlayed: 9,
         score: 39,
-        coursePlayed: "Crestwood Country Club",
         userId: 1,
+        courseId: 1,
       },
       {
         holesPlayed: 18,
         score: 75,
-        coursePlayed: "Granite Links Country Club",
         userId: 1,
+        courseId: 12,
+      },
+      {
+        holesPlayed: 18,
+        score: 80,
+        userId: 1,
+        courseId: 9,
+      },
+      {
+        holesPlayed: 18,
+        score: 78,
+        userId: 1,
+        courseId: 11,
       },
     ]
 
