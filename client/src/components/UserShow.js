@@ -2,6 +2,8 @@ import React from "react"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import GolfRoundTile from "./GolfRoundTile"
+import translateServerErrors from "../services/translateServerErrors"
+import NewRoundForm from "./newRoundForm"
 
 const UserShow = (props) => {
   const [profile, setProfile] = useState({
@@ -12,6 +14,7 @@ const UserShow = (props) => {
   })
 
   const [courses, setCourses] = useState([])
+  const [errors, setErrors] = useState([])
 
   const params = useParams()
   const userId = params.id
@@ -43,6 +46,37 @@ const UserShow = (props) => {
     }
   }
 
+  const postGolfRound = async (newRound) => {
+    try {
+      const response = await fetch(`/api/v1/users/${userId}/golfRound`, {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+        body: JSON.stringify(newRound),
+      })
+      if (!response.ok) {
+        if (response.status === 422) {
+          const body = await response.json()
+          const newErrors = translateServerErrors(body.errors)
+          return setErrors(newErrors)
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`
+          const error = new Error(errorMessage)
+          throw error
+        }
+      } else {
+        const body = await response.json()
+        const updatedGolfRounds = profile.golfRounds.concat(body.newGolfRound)
+        setErrors([])
+        setProfile({ ...profile, golfRounds: updatedGolfRounds })
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
+
   useEffect(() => {
     fetchProfile(),
     fetchCourses()
@@ -55,7 +89,11 @@ const UserShow = (props) => {
   return (
     <div>
       <h1>{profile.userName}</h1>
+      <div>
+        <NewRoundForm  postGolfRound={postGolfRound} courses={courses} errors={errors}/>
+      </div>
       <div>{golfRounds}</div>
+
     </div>
   )
 }
