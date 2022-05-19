@@ -111,6 +111,9 @@ const EditProfile = (props) => {
             </section>
           )}
         </Dropzone>
+        <div className="profile-image-container">
+          <img src={uploadedImage.preview} className="profile-image"/>
+        </div>
         <div>
           <input type="submit" className="button" value="Register" />
         </div>
