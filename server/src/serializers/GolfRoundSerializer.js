@@ -1,7 +1,7 @@
 class ReviewsSerializer {
   static async getSummary(round) {
     try {
-      const allowedAttributes = ["id", "holesPlayed", "score"]
+      const allowedAttributes = ["id", "holesPlayed", "score", 'courseId', 'userId']
 
       let serializedGolfRound = {}
       for (const attribute of allowedAttributes) {
