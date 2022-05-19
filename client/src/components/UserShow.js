@@ -11,6 +11,7 @@ const UserShow = (props) => {
     userName: "",
     firstName: "",
     lastName: "",
+    profileImage: "",
     golfRounds: [],
   })
 
@@ -110,6 +111,9 @@ const UserShow = (props) => {
     <>
       <div className="user-show">
         <h1>{profile.userName}</h1>
+        <div className="profile-image-container">
+          <img src={profile.profileImage} alt="profile picture" className="profile-image"/>
+        </div>
         <div>
           <button className="button add-round-button sign-button" onClick={toggleModal}>
             add new round
