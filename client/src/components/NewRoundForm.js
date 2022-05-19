@@ -16,18 +16,12 @@ const NewRoundForm = (props) => {
     })
   }
 
-  const clearForm = () => {
-    setNewGolfRound({
-      score: "",
-      holesPlayed: "",
-      courseId: "",
-    })
-  }
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    props.postGolfRound(newGolfRound)
-    clearForm()
+    const result = await props.postGolfRound(newGolfRound)
+    if (result) {
+      props.toggleModal()
+    }
   }
 
   const courseOptions = props.courses.map((course) => {
