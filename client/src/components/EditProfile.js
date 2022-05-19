@@ -24,7 +24,6 @@ const EditProfile = (props) => {
   }
 
   const handleImageUpload = (acceptedImage) => {
-    console.log(acceptedImage)
     setEditedProfile({
       ...editedProfile,
       profileImage: acceptedImage[0],

@@ -28,24 +28,17 @@ usersRouter.post("/", async (req, res) => {
 
 usersRouter.patch("/edit", uploadImage.single("profileImage"), async (req, res) => {
   try {
-    console.log(req.user)
     const bodyInput = await cleanUserInput(req.body)
-
     const formData = {
       ...bodyInput,
       profileImage: req.file.location,
       email: req.user.email,
       userName: req.user.userName
     }
-
-    console.log("IN THE ROUTER")
-    console.log(formData)
-
     const profile = await User.query().findById(req.user.id)
     const updatedProfile = await profile.$query().updateAndFetch(formData)
     return res.status(201).json({ updatedProfile })
   } catch (error) {
-    console.log(error)
       return res.status(500).json({ errors: error })
   }
 })
