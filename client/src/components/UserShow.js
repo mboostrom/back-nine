@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import GolfRoundTile from "./GolfRoundTile"
 import translateServerErrors from "../services/translateServerErrors"
 import NewRoundForm from "./newRoundForm"
+import Modal from "./Modal"
 
 const UserShow = (props) => {
   const [profile, setProfile] = useState({
@@ -15,6 +16,7 @@ const UserShow = (props) => {
 
   const [courses, setCourses] = useState([])
   const [errors, setErrors] = useState([])
+  const [modal, setModal] = useState(false)
 
   const params = useParams()
   const userId = params.id
@@ -34,7 +36,7 @@ const UserShow = (props) => {
 
   const fetchCourses = async () => {
     try {
-      const response = await fetch('/api/v1/courses')
+      const response = await fetch("/api/v1/courses")
       if (!response.ok) {
         const error = new Error(`${response.status} (${response.statusText})`)
         throw error
@@ -59,42 +61,64 @@ const UserShow = (props) => {
         if (response.status === 422) {
           const body = await response.json()
           const newErrors = translateServerErrors(body.errors)
-          return setErrors(newErrors)
+          setErrors(newErrors)
+          return false
         } else {
           const errorMessage = `${response.status} (${response.statusText})`
           const error = new Error(errorMessage)
           throw error
+          return false
         }
       } else {
         const body = await response.json()
         const updatedGolfRounds = profile.golfRounds.concat(body.newGolfRound)
         setErrors([])
         setProfile({ ...profile, golfRounds: updatedGolfRounds })
+        return true
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
+      return false
     }
   }
 
-
   useEffect(() => {
-    fetchProfile(),
-    fetchCourses()
+    fetchProfile(), fetchCourses()
   }, [])
+
+  const toggleModal = () => {
+    setModal(!modal)
+  }
+
+  let modalForm = ""
+  if (modal) {
+    modalForm = (
+      <Modal
+        postGolfRound={postGolfRound}
+        courses={courses}
+        errors={errors}
+        toggleModal={toggleModal}
+      />
+    )
+  }
 
   const golfRounds = profile.golfRounds.map((round) => {
     return <GolfRoundTile key={round.id} round={round} />
   })
 
   return (
-    <div>
-      <h1>{profile.userName}</h1>
-      <div>
-        <NewRoundForm  postGolfRound={postGolfRound} courses={courses} errors={errors}/>
+    <>
+      <div className="user-show">
+        <h1>{profile.userName}</h1>
+        <div>
+          <button className="button add-round-button sign-button" onClick={toggleModal}>
+            add new round
+          </button>
+        </div>
+        <div>{golfRounds}</div>
       </div>
-      <div>{golfRounds}</div>
-
-    </div>
+      <div>{modalForm}</div>
+    </>
   )
 }
 
