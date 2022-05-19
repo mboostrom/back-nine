@@ -1,0 +1,15 @@
+.profile-image-container{
+  height: 20em;
+  width: 20em;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image{
+  border-radius: 50%;
+  height: auto;
+  width: 100%;
+}

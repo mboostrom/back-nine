@@ -9,6 +9,7 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import UserShow from "./UserShow";
 import LandingPage from "./LandingPage";
+import EditProfile from "./EditProfile";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -31,10 +32,12 @@ const App = (props) => {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/users/new" component={RegistrationForm} />
+        <Route exact path="/users/edit" component={EditProfile}/>
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/users/:id">
           <UserShow currentUser={currentUser} />
         </Route>
+
       </Switch>
     </Router>
   );

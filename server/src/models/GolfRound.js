@@ -8,7 +8,7 @@ class GolfRound extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["holesPlayed", "score"],
+      required: ["holesPlayed", "score", 'courseId'],
 
       properties: {
         holesPlayed: { type: ["integer", "string"] },

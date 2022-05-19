@@ -4,8 +4,6 @@ import config from "../../config";
 
 const RegistrationForm = () => {
   const [userPayload, setUserPayload] = useState({
-    firstName: "",
-    lastName: "",
     userName: "",
     email: "",
     password: "",
@@ -28,21 +26,7 @@ const RegistrationForm = () => {
       };
     }
 
-    if (firstName.trim() == "") {
-      newErrors = {
-        ...newErrors,
-        firstName: "is required",
-      };
-    }
-
-    if (lastName.trim() == "") {
-      newErrors = {
-        ...newErrors,
-        lastName: "is required",
-      };
-    }
-
-    if (firstName.trim() == "") {
+    if (userName.trim() == "") {
       newErrors = {
         ...newErrors,
         userName: "is required",
@@ -106,27 +90,13 @@ const RegistrationForm = () => {
   };
 
   if (shouldRedirect) {
-    location.href = "/";
+    location.href = "/users/edit";
   }
 
   return (
     <div className="grid-container">
       <h1>Register</h1>
       <form onSubmit={onSubmit}>
-      <div>
-          <label>
-            First Name
-            <input type="text" name="firstName" value={userPayload.firstName} onChange={onInputChange} />
-            <FormError error={errors.firstName} />
-          </label>
-        </div>
-        <div>
-          <label>
-            Last Name
-            <input type="text" name="lastName" value={userPayload.lastName} onChange={onInputChange} />
-            <FormError error={errors.lastName} />
-          </label>
-        </div>
         <div>
           <label>
             username

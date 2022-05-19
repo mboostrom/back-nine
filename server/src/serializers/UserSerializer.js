@@ -3,7 +3,7 @@ import GolfRoundSerializer from "./GolfRoundSerializer.js"
 class UserSerializer {
   static async getSummary(user) {
     try {
-      const allowedAttribute = ["id", "email", "firstName", "lastName", "userName"]
+      const allowedAttribute = ["id", "email", "firstName", "lastName", "userName", "profileImage"]
 
       let serializedUser = {}
       for (const attribute of allowedAttribute) {
