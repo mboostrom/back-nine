@@ -1,4 +1,4 @@
-.profile-image-container{
+.profile-image-container {
   height: 20em;
   width: 20em;
   border-radius: 50%;
@@ -6,10 +6,143 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 8em;
 }
 
-.profile-image{
+.profile-image {
   border-radius: 50%;
   height: auto;
   width: 100%;
+}
+
+.user-show {
+  display: flex;
+  justify-content: space-around;
+  height: 100vh;
+}
+
+.user-info {
+  width: 40em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.golf-round-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  margin-top: 0.3em;
+}
+
+.golf-rounds {
+  padding: 20px;
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+.golf-rounds::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.golf-rounds-header {
+  height: 7em;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  align-items: center;
+  padding: 20px;
+}
+
+.golf-rounds-header p {
+  font-size: 3em;
+}
+
+.golf-round-tile {
+  height: 20em;
+  border-bottom: 0.05px solid black;
+  box-shadow: 0px 15px 10px -15px rgba(0, 0, 0, 0.7);
+}
+
+.tile-body {
+  padding: 3em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.golf-round-tile .date {
+  float: right;
+  margin-top: 1em;
+  margin-right: 1em;
+}
+
+.tile-body h2 {
+  font-size: 6em;
+}
+
+.title-score {
+  height: 13em;
+  width: 18em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tile-info {
+  height: 12em;
+  width: 18em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tile-info p {
+  font-size: 2.3em;
+  font-family: 'Lato', sans-serif;
+}
+
+.golf {
+  color: #374108;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.rounds {
+  color: #8abc50;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.score-box {
+  border: 1px solid #374108;
+  width: 11.5em;
+  height: 11.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-box h2{
+  font-family: 'Handlee', cursive;
+}
+
+.score-top{
+  height: 3em;
+  width: 11.5em;
+  background-color: #6d7833;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.holes-played{
+  border-bottom: 7px solid #6d7833;
+  width: 25em;
+  display: flex;
+  justify-content: center;
 }

@@ -3,8 +3,8 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import GolfRoundTile from "./GolfRoundTile"
 import translateServerErrors from "../services/translateServerErrors"
-import NewRoundForm from "./newRoundForm"
 import Modal from "./Modal"
+import averageScore from "../services/averageScore"
 
 const UserShow = (props) => {
   const [profile, setProfile] = useState({
@@ -84,7 +84,8 @@ const UserShow = (props) => {
   }
 
   useEffect(() => {
-    fetchProfile(), fetchCourses()
+    fetchProfile(), 
+    fetchCourses()
   }, [])
 
   const toggleModal = () => {
@@ -104,24 +105,38 @@ const UserShow = (props) => {
   }
 
   const golfRounds = profile.golfRounds.map((round) => {
-    return <GolfRoundTile key={round.id} round={round} courses={courses}/>
+    return <GolfRoundTile key={round.id} round={round} courses={courses} />
   })
+
+  let eighteenHoles = profile.golfRounds.filter((round) => round.holesPlayed === 18)
+  let avgEighteenScore = averageScore(eighteenHoles)
+
+  let nineHoles = profile.golfRounds.filter((round) => round.holesPlayed === 9)
+  let avgNineScore = averageScore(nineHoles)
 
   return (
     <>
       <div className="user-show">
-        <h1>{profile.userName}</h1>
-        <div className="profile-image-container">
-          <img src={profile.profileImage} alt="profile picture" className="profile-image"/>
+        <div className="user-info">
+          <div className="profile-image-container">
+            <img src={profile.profileImage} alt="profile picture" className="profile-image" />
+          </div>
+          <h1>{profile.userName}</h1>
+          <h3>Average Score per 18 holes: {avgEighteenScore}</h3>
+          <h3>Average Score per 9 holes: {avgNineScore}</h3>
         </div>
-        <div>
-          <button className="button add-round-button sign-button" onClick={toggleModal}>
-            add new round
-          </button>
+        <div className="golf-round-container">
+          <div className="golf-rounds-header">
+            <p><span className="golf">Golf</span><span className="rounds">Rounds</span></p>
+            <button className="button add-round-button sign-button" onClick={toggleModal}>
+              add new round
+            </button>
+          </div>
+
+          <div className="golf-rounds">{golfRounds}</div>
         </div>
-        <div>{golfRounds}</div>
+        <div>{modalForm}</div>
       </div>
-      <div>{modalForm}</div>
     </>
   )
 }
