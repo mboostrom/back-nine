@@ -39,8 +39,11 @@ const TopBar = ({ user }) => {
                 <span className="nine">Nine</span>
               </Link>
             </li>
-            <li className="profile">
+            <li className="nav-left-tab">
               <Link to={`/users/${userId}`} className="nav-link">Profile</Link>
+            </li>
+            <li className="nav-left-tab">
+              <Link to={`/find-courses`} className="nav-link">Find Courses</Link>
             </li>
           </ul>
         </div>
