@@ -17,24 +17,28 @@
 
 .user-show {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   height: 92vh;
 }
 
 .user-info {
-  width: 40em;
+  width: 50em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: -20px 0px 15px -15px rgba(0, 0, 0, 0.3);  
+  margin-right: .05em;
+  margin-top: 0.3em;
+  border-right: .3px solid rgba(0, 0, 0, 0.3);
 }
 
 .golf-round-container {
   display: flex;
   flex-direction: column;
   width: 50%;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: 20px 0px 15px -15px rgba(0, 0, 0, 0.3);
   margin-top: 0.3em;
+  margin-left: .05em;
 }
 
 .golf-rounds {
