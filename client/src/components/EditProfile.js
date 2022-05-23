@@ -69,55 +69,58 @@ const EditProfile = (props) => {
     body.append("lastName", editedProfile.lastName)
     body.append("profileImage", editedProfile.profileImage)
     const result = editUserProfile(body)
-    if(result){
+    if (result) {
       setShouldRedirect(true)
     }
   }
 
   return (
-    <div className="grid-container">
-      <h1>Edit Profile</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            First Name
-            <input
-              type="text"
-              name="firstName"
-              value={editedProfile.firstName}
-              onChange={handleChange}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Last Name
-            <input
-              type="text"
-              name="lastName"
-              value={editedProfile.lastName}
-              onChange={handleChange}
-            />
-          </label>
-        </div>
-        <p>Profile Picture</p>
-        <Dropzone onDrop={handleImageUpload}>
-          {({ getRootProps, getInputProps }) => (
-            <section>
-              <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                <p>Upload a profile picture here - drag 'n' drop or click to upload</p>
-              </div>
-            </section>
-          )}
-        </Dropzone>
-        <div className="profile-image-container">
-          <img src={uploadedImage.preview} className="profile-image"/>
-        </div>
-        <div>
-          <input type="submit" className="button" value="Register" />
-        </div>
-      </form>
+    <div className="sign-container">
+      <div className="edit-left"></div>
+      <div className="sign-form">
+        <h1>Edit Profile</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>
+              <input
+                type="text"
+                name="firstName"
+                value={editedProfile.firstName}
+                onChange={handleChange}
+                placeholder="First Name"
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              <input
+                type="text"
+                name="lastName"
+                value={editedProfile.lastName}
+                onChange={handleChange}
+                placeholder="last Name"
+              />
+            </label>
+          </div>
+          <p>Profile Picture</p>
+          <Dropzone onDrop={handleImageUpload}>
+            {({ getRootProps, getInputProps }) => (
+              <section>
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  <p>Upload a profile picture here - drag 'n' drop or click to upload</p>
+                </div>
+              </section>
+            )}
+          </Dropzone>
+          <div className="profile-image-container">
+            <img src={uploadedImage.preview} className="profile-image" />
+          </div>
+          <div>
+            <input type="submit" className="button sign-button" value="continue" />
+          </div>
+        </form>
+      </div>
     </div>
   )
 }

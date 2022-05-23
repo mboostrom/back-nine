@@ -104,7 +104,8 @@ const UserShow = (props) => {
     )
   }
 
-  const golfRounds = profile.golfRounds.map((round) => {
+  const golfRoundsByDate = profile.golfRounds.reverse()
+  const golfRounds = golfRoundsByDate.map((round) => {
     return <GolfRoundTile key={round.id} round={round} courses={courses} />
   })
 

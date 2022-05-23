@@ -40,6 +40,7 @@ const SearchPlaces = (props) => {
     }
   }
 
+  console.log(data)
   return (
     <div className="search">
       <Combobox onSelect={handleSelect}>
@@ -52,7 +53,7 @@ const SearchPlaces = (props) => {
         <ComboboxPopover>
           <ComboboxList>
             {status === "OK" &&
-              data.map(({ id, description }) => <ComboboxOption key={id} value={description} />)}
+              data.map(({ place_id, description }) =>  <ComboboxOption key={place_id} value={description} />)}
           </ComboboxList>
         </ComboboxPopover>
       </Combobox>
