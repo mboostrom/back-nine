@@ -1,7 +1,6 @@
 import React from "react"
 
 const GolfRoundTile = (props) => {
-  const course = props.courses.find(({ id }) => id === props.round.courseId)
 
   const dateTime = new Date(props.round.createdAt)
   const date = dateTime.toLocaleDateString()
@@ -22,7 +21,7 @@ const GolfRoundTile = (props) => {
           <div className="holes-played">
             <p >Holes Played: {props.round.holesPlayed}</p>
           </div>
-          <p>{course.name}</p>
+          <p>{props.course?.name}</p>
         </div>
       </div>
     </div>
