@@ -1,13 +1,13 @@
 .sign-container{
   display: flex;
   justify-content: center;
-  margin-top: 13em;
+  margin-top: 10em;
 }
 
 .sign-left{
   background-image: url('https://images.unsplash.com/photo-1623113807896-3b3a7fc2aec0?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548');
-  height: 70em;
-  width: 90em;
+  height: 50em;
+  width: 70em;
   background-position: center;
   background-size: cover;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -15,8 +15,8 @@
 
 .sign-form{
   display: flex;
-  height: 70em;
-  width: 38em;
+  height: 50em;
+  width: 28em;
   flex-direction: column;
   justify-content: center;
   padding: 4em;
@@ -37,10 +37,14 @@
   margin-top: 1.5em;
 }
 
+.sign-form input{
+  border-radius: 12px;
+}
+
 .sign-up-left{
   background-image: url('https://images.unsplash.com/photo-1629673120178-53a664eec9e8?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740');
-  height: 70em;
-  width: 90em;
+  height: 50em;
+  width: 70em;
   background-position: center;
   background-size: cover;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -48,8 +52,8 @@
 
 .edit-left{
   background-image: url('https://images.unsplash.com/photo-1562204320-31975a5e09ce?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1694');
-  height: 70em;
-  width: 90em;
+  height: 50em;
+  width: 70em;
   background-position: center;
   background-size: cover;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;

@@ -36,6 +36,7 @@ const FindCourses = (props) => {
   const options = {
     styles: mapStyle,
     mapTypeId: "satellite",
+    disableDefaultUI: true,
   }
 
   return (
