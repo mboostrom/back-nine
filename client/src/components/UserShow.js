@@ -5,6 +5,7 @@ import GolfRoundTile from "./GolfRoundTile"
 import translateServerErrors from "../services/translateServerErrors"
 import Modal from "./Modal"
 import averageScore from "../services/averageScore"
+import Chart from "react-google-charts"
 
 const UserShow = (props) => {
   const [profile, setProfile] = useState({
@@ -84,8 +85,7 @@ const UserShow = (props) => {
   }
 
   useEffect(() => {
-    fetchProfile(), 
-    fetchCourses()
+    fetchProfile(), fetchCourses()
   }, [])
 
   const toggleModal = () => {
@@ -102,6 +102,78 @@ const UserShow = (props) => {
         toggleModal={toggleModal}
       />
     )
+  }
+
+  let oneHundred = []
+  let ninety = []
+  let eighty = []
+  let seventy = []
+  let sixtyEighteen = []
+
+  profile.golfRounds.forEach((round) => {
+    if (round.holesPlayed === 18 && round.score >= 100) {
+      oneHundred.push(round)
+    } else if (round.holesPlayed === 18 && round.score >= 90 && round.score <= 99) {
+      ninety.push(round)
+    } else if (round.holesPlayed === 18 && round.score >= 80 && round.score <= 89) {
+      eighty.push(round)
+    } else if (round.holesPlayed === 18 && round.score >= 70 && round.score <= 79) {
+      seventy.push(round)
+    } else if (round.holesPlayed === 18 && round.score >= 60 && round.score <= 69) {
+      sixtyEighteen.push(round)
+    }
+  })
+
+  let thirty = []
+  let fourty = []
+  let fifty = []
+  let sixty = []
+
+  profile.golfRounds.forEach((round) => {
+    if (round.holesPlayed === 9 && round.score >= 60) {
+      sixty.push(round)
+    } else if (round.holesPlayed === 9 && round.score >= 50 && round.score <= 59) {
+      fifty.push(round)
+    } else if (round.holesPlayed === 9 && round.score >= 40 && round.score <= 49) {
+      fourty.push(round)
+    } else if (round.holesPlayed === 9 && round.score >= 30 && round.score <= 39) {
+      thirty.push(round)
+    }
+  })
+
+  const eighteenData = [
+    ["Score", "amount of rounds"],
+    ["100+", oneHundred.length],
+    ["90 - 99", ninety.length],
+    ["80 - 89", eighty.length],
+    ["70 - 79", seventy.length],
+    ["60 - 69", sixtyEighteen.length],
+  ]
+
+  const optionsEighteen = {
+    title: "Scoring Percentages per 18 holes",
+    is3D: true,
+    colors: ["#8abc50", "#374108", "#6d7833", "#6BA03F", "#315A3A"],
+    backgroundColor: "transparent",
+    fontSize: 20,
+    bold: true,
+  }
+
+  const nineData = [
+    ["Score", "amount of rounds"],
+    ["60+", sixty.length],
+    ["50 - 59", fifty.length],
+    ["40 - 49", fourty.length],
+    ["30 - 39", thirty.length],
+  ]
+
+  const optionsNine = {
+    title: "Scoring Percentages per 9 holes",
+    is3D: true,
+    colors: ["#8abc50", "#374108", "#6d7833", "#6BA03F", "#315A3A"],
+    backgroundColor: "transparent",
+    fontSize: 20,
+    bold: true,
   }
 
   const golfRoundsByDate = profile.golfRounds.reverse()
@@ -122,13 +194,44 @@ const UserShow = (props) => {
           <div className="profile-image-container">
             <img src={profile.profileImage} alt="profile picture" className="profile-image" />
           </div>
-          <h1>{profile.userName}</h1>
-          <h3>Average Score per 18 holes: {avgEighteenScore}</h3>
-          <h3>Average Score per 9 holes: {avgNineScore}</h3>
+          <div className="profile-info">
+            <div className="profile-header">
+              <h1>{profile.userName}</h1>
+              <p>
+                {profile.firstName} {profile.lastName}
+              </p>
+            </div>
+
+            <h3>Average Score per 18 holes: {avgEighteenScore}</h3>
+            <h3>Average Score per 9 holes: {avgNineScore}</h3>
+          </div>
+          <div className="chart-container">
+            <div className="pie-chart">
+              <Chart
+                chartType="PieChart"
+                data={eighteenData}
+                options={optionsEighteen}
+                width={"600px"}
+                height={"400px"}
+              />
+            </div>
+            <div className="pie-chart">
+              <Chart
+                chartType="PieChart"
+                data={nineData}
+                options={optionsNine}
+                width={"600px"}
+                height={"400px"}
+              />
+            </div>
+          </div>
         </div>
         <div className="golf-round-container">
           <div className="golf-rounds-header">
-            <p><span className="golf">Golf</span><span className="rounds">Rounds</span></p>
+            <p>
+              <span className="golf">Golf</span>
+              <span className="rounds">Rounds</span>
+            </p>
             <button className="button add-round-button sign-button" onClick={toggleModal}>
               add new round
             </button>

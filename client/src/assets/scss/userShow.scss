@@ -1,18 +1,36 @@
 .profile-image-container {
   height: 20em;
   width: 20em;
+  border: 5px solid #6d7833;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 8em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .profile-image {
   border-radius: 50%;
   height: auto;
   width: 100%;
+}
+
+.profile-header{
+  margin-top: 2em;
+  margin-bottom: 2.5em;
+}
+
+.profile-header h1{
+  color: #374108;
+  text-align: center;
+  font-weight: bold;
+}
+
+.profile-header p{
+  color: #6d7833;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 .user-show {
@@ -30,6 +48,16 @@
   margin-right: .05em;
   margin-top: 0.3em;
   border-right: .3px solid rgba(0, 0, 0, 0.3);
+  padding-top: 5em;
+}
+
+.chart-container{
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+.chart-container::-webkit-scrollbar {
+  width: 0 !important;
 }
 
 .golf-round-container {
