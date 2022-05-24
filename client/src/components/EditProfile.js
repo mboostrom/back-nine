@@ -1,5 +1,6 @@
 import React from "react"
 import { useState } from "react"
+import { Redirect } from "react-router-dom"
 import Dropzone from "react-dropzone"
 
 const EditProfile = (props) => {
@@ -35,6 +36,7 @@ const EditProfile = (props) => {
   }
 
   const editUserProfile = async (profileBody) => {
+    console.log("profile body", profileBody)
     try {
       const response = await fetch("/api/v1/users/edit", {
         method: "PATCH",
@@ -47,19 +49,13 @@ const EditProfile = (props) => {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
         throw error
-      } else {
-        const body = await response.json()
-        setEditedProfile({ body })
-        return true
-      }
+      } 
+        setShouldRedirect(true)
     } catch (error) {
+      console.log(error)
       console.error(`Error in fetch: ${error.message}`)
       return false
     }
-  }
-
-  if (shouldRedirect) {
-    location.href = "/"
   }
 
   const handleSubmit = (event) => {
@@ -68,10 +64,12 @@ const EditProfile = (props) => {
     body.append("firstName", editedProfile.firstName)
     body.append("lastName", editedProfile.lastName)
     body.append("profileImage", editedProfile.profileImage)
-    const result = editUserProfile(body)
-    if (result) {
-      setShouldRedirect(true)
-    }
+    
+    editUserProfile(body)
+  }
+
+  if (shouldRedirect) {
+    return <Redirect push to="/" />
   }
 
   return (

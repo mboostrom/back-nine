@@ -37,7 +37,7 @@ usersRouter.patch("/edit", uploadImage.single("profileImage"), async (req, res) 
     }
     const profile = await User.query().findById(req.user.id)
     const updatedProfile = await profile.$query().updateAndFetch(formData)
-    return res.status(201).json({ updatedProfile })
+    return res.status(204).json({ updatedProfile })
   } catch (error) {
       return res.status(500).json({ errors: error })
   }
