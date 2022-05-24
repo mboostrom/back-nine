@@ -3,7 +3,7 @@ import passport from "passport"
 import { User } from "../../../models/index.js"
 import UserSerializer from "../../../serializers/UserSerializer.js"
 import userRoundRouter from "./userRoundRouter.js"
-import uploadImage from "../../../services/UploadImage.js"
+import uploadImage from "../../../services/uploadImage.js"
 import cleanUserInput from "../../../services/cleanUserInput.js"
 
 
