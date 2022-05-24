@@ -176,9 +176,10 @@ const UserShow = (props) => {
     bold: true,
   }
 
-  const golfRoundsByDate = profile.golfRounds.reverse()
+  const golfRoundsByDate = profile.golfRounds.slice().reverse()
   const golfRounds = golfRoundsByDate.map((round) => {
-    return <GolfRoundTile key={round.id} round={round} courses={courses} />
+    const course = courses.find(({ id }) => id === round.courseId)
+    return <GolfRoundTile key={round.id} round={round} course={course} />
   })
 
   let eighteenHoles = profile.golfRounds.filter((round) => round.holesPlayed === 18)
