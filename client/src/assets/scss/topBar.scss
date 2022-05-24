@@ -1,21 +1,21 @@
 .top-bar {
-  height: 8em;
+  height: 6em;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  padding-left: 20em;
-  padding-right: 20em;
+  padding-left: 17em;
+  padding-right: 17em;
 }
 
 .sign-button {
   background-color: #6d7833 !important;
   width: 7em;
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1em;
   font-weight: bold;
   border-radius: 16px;
 }
 
 .nav-link{
-  font-size: 1.3em;
+  font-size: 1em;
   text-align: center;
   font-weight: bold;
   color: #6d7833 !important;
@@ -23,13 +23,13 @@
 
 .back{
   color: #374108;
-  font-size: 3em;
+  font-size: 2.2em;
   font-weight: bold;
 }
 
 .nine{
   color: #8ABC50;
-  font-size: 3em;
+  font-size: 2.2em;
   font-weight: bold;
   margin-right: 1em;
 }
@@ -39,7 +39,7 @@
 }
 
 .nav-left-tab{
-  margin-left: 2em;
+  margin-left: 1em;
   display: flex;
   align-items: center;
 }

@@ -155,7 +155,7 @@ const UserShow = (props) => {
     is3D: true,
     colors: ["#8abc50", "#374108", "#6d7833", "#6BA03F", "#315A3A"],
     backgroundColor: "transparent",
-    fontSize: 20,
+    fontSize: 15,
     bold: true,
   }
 
@@ -172,7 +172,7 @@ const UserShow = (props) => {
     is3D: true,
     colors: ["#8abc50", "#374108", "#6d7833", "#6BA03F", "#315A3A"],
     backgroundColor: "transparent",
-    fontSize: 20,
+    fontSize: 15,
     bold: true,
   }
 
@@ -203,8 +203,8 @@ const UserShow = (props) => {
               </p>
             </div>
 
-            <h3>Average Score per 18 holes: {avgEighteenScore}</h3>
-            <h3>Average Score per 9 holes: {avgNineScore}</h3>
+            <h3 className="averages">Average Score per 18 holes: {avgEighteenScore}</h3>
+            <h3 className="averages">Average Score per 9 holes: {avgNineScore}</h3>
           </div>
           <div className="chart-container">
             <div className="pie-chart">
@@ -212,8 +212,8 @@ const UserShow = (props) => {
                 chartType="PieChart"
                 data={eighteenData}
                 options={optionsEighteen}
-                width={"600px"}
-                height={"400px"}
+                width={"500px"}
+                height={"300px"}
               />
             </div>
             <div className="pie-chart">
@@ -221,8 +221,8 @@ const UserShow = (props) => {
                 chartType="PieChart"
                 data={nineData}
                 options={optionsNine}
-                width={"600px"}
-                height={"400px"}
+                width={"500px"}
+                height={"300px"}
               />
             </div>
           </div>
