@@ -1,5 +1,5 @@
 import React from "react"
-import NewRoundForm from "./newRoundForm"
+import NewRoundForm from "./NewRoundForm"
 
 const Modal = (props) => {
   return (
