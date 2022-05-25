@@ -7,7 +7,14 @@ import Modal from "./Modal"
 import averageScore from "../services/averageScore"
 import Chart from "react-google-charts"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPlus, faRegular, faSquarePlus, faPencil } from "@fortawesome/free-solid-svg-icons"
+import {
+  faPlus,
+  faRegular,
+  faSquarePlus,
+  faPencil,
+  faFlag,
+} from "@fortawesome/free-solid-svg-icons"
+import CourseModal from "./CourseModal"
 
 const UserShow = (props) => {
   const [profile, setProfile] = useState({
@@ -21,6 +28,9 @@ const UserShow = (props) => {
   const [courses, setCourses] = useState([])
   const [errors, setErrors] = useState([])
   const [modal, setModal] = useState(false)
+  const [courseModal, setCourseModal] = useState(false)
+
+  console.log(courses)
 
   const params = useParams()
   const userId = params.id
@@ -86,12 +96,50 @@ const UserShow = (props) => {
     }
   }
 
+  const postGolfCourse = async (newCourse) => {
+    try {
+      const response = await fetch(`/api/v1/courses/new-course`, {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+        body: JSON.stringify(newCourse),
+      })
+      if (!response.ok) {
+        if (response.status === 422) {
+          const body = await response.json()
+          const newErrors = translateServerErrors(body.errors)
+          setErrors(newErrors)
+          return false
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`
+          const error = new Error(errorMessage)
+          throw error
+          return false
+        }
+      } else {
+        const body = await response.json()
+        const updatedGolfRounds = courses.concat(body.newGolfCourse)
+        setErrors([])
+        setCourses(updatedGolfRounds)
+        return true
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+      return false
+    }
+  }
+
   useEffect(() => {
     fetchProfile(), fetchCourses()
   }, [])
 
   const toggleModal = () => {
     setModal(!modal)
+  }
+
+  const toggleCourseModal = () => {
+    setCourseModal(!courseModal)
   }
 
   let modalForm = ""
@@ -102,6 +150,17 @@ const UserShow = (props) => {
         courses={courses}
         errors={errors}
         toggleModal={toggleModal}
+      />
+    )
+  }
+
+  let courseModalForm = ""
+  if (courseModal) {
+    courseModalForm = (
+      <CourseModal
+        postGolfCourse={postGolfCourse}
+        errors={errors}
+        toggleCourseModal={toggleCourseModal}
       />
     )
   }
@@ -240,17 +299,30 @@ const UserShow = (props) => {
               <span className="golf">Golf</span>
               <span className="rounds">Rounds</span>
             </p>
-            <FontAwesomeIcon
-              icon={faPlus}
-              size="2x"
-              onClick={toggleModal}
-              className="add-round-icon"
-            />
+            <div className="icons">
+              <div class="new-course-container" onClick={toggleCourseModal} title="Add Course">
+                <FontAwesomeIcon icon={faPlus} size="xl" className="add-course-icon"/>
+                <FontAwesomeIcon
+                  icon={faFlag}
+                  size="2x"
+                  className="add-course-icon"
+                />
+              </div>
+
+              <FontAwesomeIcon
+                icon={faPlus}
+                size="2x"
+                onClick={toggleModal}
+                className="add-round-icon"
+                title="Add Round"
+              />
+            </div>
           </div>
 
           <div className="golf-rounds">{golfRounds}</div>
         </div>
         <div>{modalForm}</div>
+        <div>{courseModalForm}</div>
       </div>
     </>
   )
