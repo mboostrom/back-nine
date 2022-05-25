@@ -3,8 +3,8 @@ import NewRoundForm from "./NewRoundForm"
 
 const Modal = (props) => {
   return (
-    <div className="modal-container">
-      <div className="modal-body">
+    <div className="modal-container" onClick={props.toggleModal}>
+      <div className="modal-body" onClick={event => event.stopPropagation()}>
         <div className="close">
           <p onClick={props.toggleModal}>X</p>
         </div>

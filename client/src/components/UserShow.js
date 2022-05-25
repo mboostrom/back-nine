@@ -1,11 +1,13 @@
 import React from "react"
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import GolfRoundTile from "./GolfRoundTile"
 import translateServerErrors from "../services/translateServerErrors"
 import Modal from "./Modal"
 import averageScore from "../services/averageScore"
 import Chart from "react-google-charts"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPlus, faRegular, faSquarePlus, faPencil } from "@fortawesome/free-solid-svg-icons"
 
 const UserShow = (props) => {
   const [profile, setProfile] = useState({
@@ -197,7 +199,12 @@ const UserShow = (props) => {
           </div>
           <div className="profile-info">
             <div className="profile-header">
-              <h1>{profile.userName}</h1>
+              <h1>
+                {profile.userName}
+                <Link to="/users/edit" title="Edit Profile">
+                  <FontAwesomeIcon icon={faPencil} className="edit-icon" />
+                </Link>
+              </h1>
               <p>
                 {profile.firstName} {profile.lastName}
               </p>
@@ -233,9 +240,12 @@ const UserShow = (props) => {
               <span className="golf">Golf</span>
               <span className="rounds">Rounds</span>
             </p>
-            <button className="button add-round-button sign-button" onClick={toggleModal}>
-              add new round
-            </button>
+            <FontAwesomeIcon
+              icon={faPlus}
+              size="2x"
+              onClick={toggleModal}
+              className="add-round-icon"
+            />
           </div>
 
           <div className="golf-rounds">{golfRounds}</div>
