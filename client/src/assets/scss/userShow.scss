@@ -215,3 +215,19 @@
 .edit-icon:hover{
   color:#374108
 }
+
+.icons{
+  width: 10em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.add-course-icon{
+  color:#6d7833;
+  cursor: pointer;
+}
+
+.add-course-button, .add-round-button{
+  width: 9em;
+}

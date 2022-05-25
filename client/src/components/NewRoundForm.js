@@ -89,7 +89,7 @@ const NewRoundForm = (props) => {
             </select>
           </label>
           <div>
-            <input type="submit" name="submit" value="Add Round" className="button sign-button" />
+            <input type="submit" name="submit" value="Add Round" className="button sign-button add-round-button" />
           </div>
         </form>
       </div>
