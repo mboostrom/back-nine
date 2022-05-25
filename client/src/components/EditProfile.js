@@ -69,7 +69,7 @@ const EditProfile = (props) => {
   }
 
   if (shouldRedirect) {
-    return <Redirect push to="/" />
+    return <Redirect push to={`/users/${props.currentUser.id}`} />
   }
 
   return (
@@ -85,7 +85,7 @@ const EditProfile = (props) => {
                 name="firstName"
                 value={editedProfile.firstName}
                 onChange={handleChange}
-                placeholder="First Name"
+                placeholder='First Name'
               />
             </label>
           </div>
@@ -100,13 +100,12 @@ const EditProfile = (props) => {
               />
             </label>
           </div>
-          <p>Profile Picture</p>
           <Dropzone onDrop={handleImageUpload}>
             {({ getRootProps, getInputProps }) => (
               <section>
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
-                  <p>Upload a profile picture here - drag 'n' drop or click to upload</p>
+                  <p><span className="add-picture">Add Picture</span> - drag and drop or click Add Picture</p>
                 </div>
               </section>
             )}

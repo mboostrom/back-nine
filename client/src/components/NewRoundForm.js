@@ -36,7 +36,7 @@ const NewRoundForm = (props) => {
   return (
     <div>
       <div className="add-round">
-        <h1>Add a Golf Round:</h1>
+        <h1>Add a Golf Round</h1>
       </div>
       <div>
         <ErrorList errors={props.errors} />
@@ -53,28 +53,29 @@ const NewRoundForm = (props) => {
             />
           </label>
           <p>Holes Played:</p>
-          <div>
+          <div className="radio">
             <input
               type="radio"
               name="holesPlayed"
+              className="holesPlayed"
               value="9"
               checked={newGolfRound.holesPlayed === "9"}
               onChange={handleChange}
             />
-            9
+             <span className="holes">9</span>
           </div>
-          <div>
+          <div className="radio">
             <input
               type="radio"
               name="holesPlayed"
+              className="holesPlayed"
               value="18"
               checked={newGolfRound.holesPlayed === "18"}
               onChange={handleChange}
             />
-            18
+              <span className="holes">18</span>
           </div>
-          <label>
-            course:
+          <label className="course-select">
             <select
               name="courseId"
               onChange={handleChange}
