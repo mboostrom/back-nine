@@ -269,9 +269,8 @@ const UserShow = (props) => {
                 {profile.firstName} {profile.lastName}
               </p>
             </div>
-
-            <h3 className="averages">Average Score per 18 holes: {avgEighteenScore}</h3>
-            <h3 className="averages">Average Score per 9 holes: {avgNineScore}</h3>
+            <h3 className="averages">Average Score per 18 holes: <span>{avgEighteenScore}</span></h3>
+            <h3 className="averages">Average Score per 9 holes: <span>{avgNineScore}</span></h3>
           </div>
           <div className="chart-container">
             <div className="pie-chart">
