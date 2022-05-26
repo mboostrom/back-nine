@@ -13,6 +13,7 @@ import {
   faSquarePlus,
   faPencil,
   faFlag,
+  faGolfBallTee,
 } from "@fortawesome/free-solid-svg-icons"
 import CourseModal from "./CourseModal"
 
@@ -301,21 +302,13 @@ const UserShow = (props) => {
             </p>
             <div className="icons">
               <div class="new-course-container" onClick={toggleCourseModal} title="Add Course">
-                <FontAwesomeIcon icon={faPlus} size="xl" className="add-course-icon"/>
-                <FontAwesomeIcon
-                  icon={faFlag}
-                  size="2x"
-                  className="add-course-icon"
-                />
+                <FontAwesomeIcon icon={faPlus} size="xl" className="add-course-icon" />
+                <FontAwesomeIcon icon={faFlag} size="2x" className="add-course-icon" />
               </div>
-
-              <FontAwesomeIcon
-                icon={faPlus}
-                size="2x"
-                onClick={toggleModal}
-                className="add-round-icon"
-                title="Add Round"
-              />
+              <div className="new-round-container" onClick={toggleModal} title="Add Round">
+                <FontAwesomeIcon icon={faPlus} size="xl" className="add-round-icon" />
+                <FontAwesomeIcon icon={faGolfBallTee} size="2x" className="add-round-icon" />
+              </div>
             </div>
           </div>
 
