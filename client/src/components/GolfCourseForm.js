@@ -39,6 +39,7 @@ const GolfCourseForm = (props) => {
               onChange={handleChange}
               value={newGolfCourse.name}
               placeholder="Course Name"
+              className="form-text"
             />
           </label>
           <label>
@@ -48,6 +49,7 @@ const GolfCourseForm = (props) => {
               onChange={handleChange}
               value={newGolfCourse.location}
               placeholder="city, state"
+              className="form-text"
             />
           </label>
           <input type="submit" name="submit" value="Add Course" className="button sign-button add-course-button" />

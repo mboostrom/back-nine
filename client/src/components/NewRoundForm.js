@@ -50,6 +50,7 @@ const NewRoundForm = (props) => {
               onChange={handleChange}
               value={newGolfRound.score}
               placeholder="score"
+              className="form-text"
             />
           </label>
           <p>Holes Played:</p>
@@ -81,6 +82,7 @@ const NewRoundForm = (props) => {
               onChange={handleChange}
               value={newGolfRound.courseId}
               placeholder="Pick a course"
+              className="form-text"
             >
               <option>
                 Select a course
