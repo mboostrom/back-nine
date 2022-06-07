@@ -1,8 +1,12 @@
 .top-bar {
   height: 6em;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  padding-left: 17em;
-  padding-right: 17em;
+  padding-left: 10em;
+  padding-right: 10em;
+}
+
+.hamburger {
+  display: none;
 }
 
 .sign-button {
@@ -14,36 +18,129 @@
   border-radius: 16px;
 }
 
-.nav-link{
+.hamburger-menu .sign-up-button{
+  background-color: #6d7833 !important;
+  width: 7em;
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 16px;
+  color: white;
+}
+
+.nav-link {
   font-size: 1em;
   text-align: center;
   font-weight: bold;
   color: #6d7833 !important;
 }
 
-.back{
+.back {
   color: #374108;
   font-size: 2.2em;
   font-weight: bold;
 }
 
-.nine{
-  color: #8ABC50;
+.nine {
+  color: #8abc50;
   font-size: 2.2em;
   font-weight: bold;
   margin-right: 1em;
 }
 
-.home{
-  border-right: .5px solid #374108;
+.home {
+  border-right: 0.5px solid #374108;
 }
 
-.nav-left-tab{
+.nav-left-tab {
   margin-left: 1em;
   display: flex;
   align-items: center;
 }
 
-.profile:hover{
-  border-bottom: .5px solid #374108;
+@media (max-width: 1300px) {
+  .top-bar {
+    height: 6em;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    padding-left: 7em;
+    padding-right: 7em;
+  }
+}
+
+@media (max-width: 990px) {
+  .top-bar {
+    height: auto;
+    padding-left: 3em;
+    padding-right: 3em;
+    box-shadow: none;
+  }
+
+  .home {
+    border-right: none;
+  }
+
+  .hamburger {
+    position: absolute;
+    display: flex;
+    right: 5em;
+    top: 1.6em;
+  }
+
+  .top-bar-right {
+    display: none;
+  }
+
+  .nav-left-tab {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    transition: all 1s ease-in-out;
+    opacity: 1;
+    animation-name: fadeIn;
+    -webkit-animation-name: fadeIn;
+    animation-duration: .5s;
+    -webkit-animation-duration: 1;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    visibility: visible !important;
+    z-index: 100;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      transform: scale(.5);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadeIn {
+    0% {
+      -webkit-transform: scale(.5);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .hamburger-menu li {
+    list-style: none;
+    margin-top: 1em;
+  }
+
+  .hamburger-menu a {
+    color: #6d7833;
+    font-weight: bold;
+  }
 }

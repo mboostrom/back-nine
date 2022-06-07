@@ -1,14 +1,6 @@
 import React from "react"
 import { GoogleMap, LoadScript, Marker, InfoWindow, GoogleApiWrapper } from "@react-google-maps/api"
 import mapStyle from "../services/mapStyles"
-import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete"
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-} from "@reach/combobox"
 import SearchMap from './SearchMap'
 const libraries = ["places"];
 
@@ -47,7 +39,7 @@ const FindCourses = (props) => {
         </div>
         <GoogleMap
           mapContainerStyle={mapStyles}
-          zoom={17}
+          zoom={16}
           center={defaultCenter}
           options={options}
           onLoad={onMapLoad}
