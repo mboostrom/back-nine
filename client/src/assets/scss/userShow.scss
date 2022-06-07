@@ -1,5 +1,7 @@
 .profile-image-container {
-  height: 14em;
+  min-height: 7em;
+  max-height: 25%;
+  height: auto;
   aspect-ratio: 1 / 1;
   border: 1px solid rgba(0, 0, 0, 0.35);
   border-radius: 50%;
@@ -9,11 +11,9 @@
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-top: 1.5em;
-  min-height: 12em;
-  max-height: 23%;
 }
 
-.profile-image-preview{
+.profile-image-preview {
   aspect-ratio: 1 / 1;
   max-height: 4em;
   border-radius: 50%;
@@ -29,12 +29,12 @@
   width: 100%;
 }
 
-.profile-header{
+.profile-header {
   margin-top: 1.5em;
   margin-bottom: 1.75em;
 }
 
-.profile-header h1{
+.profile-header h1 {
   color: #374108;
   text-align: center;
   font-weight: bold;
@@ -42,12 +42,12 @@
   margin-left: 1.5em;
 }
 
-.profile-header p{
+.profile-header p {
   color: #6d7833;
   text-align: center;
-  font-size: .75em;
+  font-size: 0.75em;
 }
-.profile-info{
+.profile-info {
   margin-bottom: 2.5em;
 }
 
@@ -58,34 +58,34 @@
 }
 
 .user-info {
-  width: 35em;
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: -20px 0px 15px -15px rgba(0, 0, 0, 0.3);  
-  margin-right: .05em;
+  box-shadow: -20px 0px 15px -15px rgba(0, 0, 0, 0.3);
+  margin-right: 0.05em;
   margin-top: 0.3em;
-  border-right: .3px solid rgba(0, 0, 0, 0.3);
+  border-right: 0.3px solid rgba(0, 0, 0, 0.3);
   padding-top: 2.5em;
 }
 
-.averages{
+.averages {
   font-size: 1.25em;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
-.averages{
+.averages {
   display: flex;
   justify-content: space-between;
 }
 
-.averages span{
+.averages span {
   font-weight: bold;
   color: #6d7833;
-  margin-left: .75em;
+  margin-left: 0.75em;
 }
 
-.chart-container{
+.chart-container {
   overflow: scroll;
   white-space: nowrap;
 }
@@ -100,7 +100,7 @@
   width: 50%;
   box-shadow: 20px 0px 15px -15px rgba(0, 0, 0, 0.3);
   margin-top: 0.3em;
-  margin-left: .05em;
+  margin-left: 0.05em;
 }
 
 .golf-rounds {
@@ -142,7 +142,7 @@
   float: right;
   margin-top: 1em;
   margin-right: 1em;
-  font-size: .75em;
+  font-size: 0.75em;
 }
 
 .tile-body h2 {
@@ -170,18 +170,18 @@
 
 .tile-info p {
   font-size: 1.6em;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .golf {
   color: #374108;
-  font-size: .75em;
+  font-size: 0.75em;
   font-weight: bold;
 }
 
 .rounds {
   color: #8abc50;
-  font-size: .75em;
+  font-size: 0.75em;
   font-weight: bold;
 }
 
@@ -194,11 +194,11 @@
   align-items: center;
 }
 
-.score-box h2{
-  font-family: 'Handlee', cursive;
+.score-box h2 {
+  font-family: "Handlee", cursive;
 }
 
-.score-top{
+.score-top {
   height: 2em;
   width: 8em;
   background-color: #6d7833;
@@ -209,49 +209,96 @@
   padding-top: 10px;
 }
 
-.score-top h4{
+.score-top h4 {
   margin-top: 12px;
   font-size: 1em;
 }
 
-.holes-played{
+.holes-played {
   border-bottom: 3px solid #6d7833;
   width: 15em;
   display: flex;
   justify-content: center;
 }
 
-.add-round-icon{
-  color:#6d7833;
+.add-round-icon {
+  color: #6d7833;
   cursor: pointer;
 }
 
-.edit-icon{
+.edit-icon {
   margin-left: 20px;
   margin-bottom: 5px;
   width: 20px;
   height: 20px;
-  color:#A1C972;
+  color: #a1c972;
   cursor: pointer;
 }
 
-
-.edit-icon:hover{
-  color:#374108
+.edit-icon:hover {
+  color: #374108;
 }
 
-.icons{
+.icons {
   width: 10em;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.add-course-icon{
-  color:#6d7833;
+.add-course-icon {
+  color: #6d7833;
   cursor: pointer;
 }
 
-.add-course-button, .add-round-button{
+.add-course-button,
+.add-round-button {
   width: 9em;
+}
+
+
+@media (max-width: 1420px) {
+  .user-info {
+    width: 30%;
+    padding-top: none;
+  }
+
+  .profile-image-container {
+    margin-top: 0;
+  }
+
+  .profile-header h1 {
+    color: #374108;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1em;
+    margin-left: 2.1em;
+  }
+
+  .averages {
+    font-size: 1em;
+    font-family: "Lato", sans-serif;
+  }
+
+  .golf-rounds-header {
+    height: 4em;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .golf-rounds-header p {
+    font-size: 2em;
+  }
+
+  .edit-icon {
+    margin-left: 15px;
+    margin-bottom: 5px;
+    width: 15px;
+    height: 15px;
+    color: #a1c972;
+    cursor: pointer;
+  }
 }

@@ -217,7 +217,7 @@ const UserShow = (props) => {
     is3D: true,
     colors: ["#8abc50", "#374108", "#6d7833", "#6BA03F", "#315A3A"],
     backgroundColor: "transparent",
-    fontSize: 15,
+    fontSize: 13,
     bold: true,
   }
 
@@ -234,7 +234,7 @@ const UserShow = (props) => {
     is3D: true,
     colors: ["#8abc50", "#374108", "#6d7833", "#6BA03F", "#315A3A"],
     backgroundColor: "transparent",
-    fontSize: 15,
+    fontSize: 13,
     bold: true,
   }
 
@@ -278,8 +278,8 @@ const UserShow = (props) => {
                 chartType="PieChart"
                 data={eighteenData}
                 options={optionsEighteen}
-                width={"500px"}
-                height={"300px"}
+                width={"100%"}
+                height={"100%"}
               />
             </div>
             <div className="pie-chart">
@@ -287,8 +287,8 @@ const UserShow = (props) => {
                 chartType="PieChart"
                 data={nineData}
                 options={optionsNine}
-                width={"500px"}
-                height={"300px"}
+                width={"100%"}
+                height={"100%"}
               />
             </div>
           </div>
@@ -301,12 +301,12 @@ const UserShow = (props) => {
             </p>
             <div className="icons">
               <div class="new-course-container" onClick={toggleCourseModal} title="Add Course">
-                <FontAwesomeIcon icon={faPlus} size="xl" className="add-course-icon" />
-                <FontAwesomeIcon icon={faFlag} size="2x" className="add-course-icon" />
+                <FontAwesomeIcon icon={faPlus} size="l" className="add-course-icon" />
+                <FontAwesomeIcon icon={faFlag} size="xl" className="add-course-icon" />
               </div>
               <div className="new-round-container" onClick={toggleModal} title="Add Round">
-                <FontAwesomeIcon icon={faPlus} size="xl" className="add-round-icon" />
-                <FontAwesomeIcon icon={faGolfBallTee} size="2x" className="add-round-icon" />
+                <FontAwesomeIcon icon={faPlus} size="l" className="add-round-icon" />
+                <FontAwesomeIcon icon={faGolfBallTee} size="xl" className="add-round-icon" />
               </div>
             </div>
           </div>
