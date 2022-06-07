@@ -9,7 +9,7 @@ import {
   ComboboxOption,
 } from "@reach/combobox"
 
-const SearchPlaces = (props) => {
+const SearchMap = (props) => {
   const {
     ready,
     value,
@@ -61,4 +61,4 @@ const SearchPlaces = (props) => {
   )
 }
 
-export default SearchPlaces
+export default SearchMap

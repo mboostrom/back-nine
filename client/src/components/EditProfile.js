@@ -110,7 +110,7 @@ const EditProfile = (props) => {
               </section>
             )}
           </Dropzone>
-          <div className="profile-image-container">
+          <div className="profile-image-preview">
             <img src={uploadedImage.preview} className="profile-image" />
           </div>
           <div>
