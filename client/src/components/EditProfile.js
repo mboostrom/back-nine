@@ -105,7 +105,7 @@ const EditProfile = (props) => {
               <section>
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
-                  <p><span className="add-picture">Add Picture</span> - drag and drop or click Add Picture</p>
+                  <p><span className="add-picture">Add Profile Picture</span></p>
                 </div>
               </section>
             )}
