@@ -16,6 +16,7 @@ import {
   faGolfBallTee,
 } from "@fortawesome/free-solid-svg-icons"
 import CourseModal from "./CourseModal"
+import MobileUserInfo from "./MobileUserInfo"
 
 const UserShow = (props) => {
   const [profile, setProfile] = useState({
@@ -253,6 +254,17 @@ const UserShow = (props) => {
   return (
     <>
       <div className="user-show">
+        <div className="mobile-info">
+          <MobileUserInfo
+            profile={profile}
+            avgEighteenScore={avgEighteenScore}
+            avgNineScore={avgNineScore}
+            eighteenData={eighteenData}
+            optionsEighteen={optionsEighteen}
+            nineData={nineData}
+            optionsNine={optionsNine}
+          />
+        </div>
         <div className="user-info">
           <div className="profile-image-container">
             <img src={profile.profileImage} alt="profile picture" className="profile-image" />
@@ -269,8 +281,12 @@ const UserShow = (props) => {
                 {profile.firstName} {profile.lastName}
               </p>
             </div>
-            <h3 className="averages">Average Score per 18 holes: <span>{avgEighteenScore}</span></h3>
-            <h3 className="averages">Average Score per 9 holes: <span>{avgNineScore}</span></h3>
+            <h3 className="averages">
+              Average Score per 18 holes: <span>{avgEighteenScore}</span>
+            </h3>
+            <h3 className="averages">
+              Average Score per 9 holes: <span>{avgNineScore}</span>
+            </h3>
           </div>
           <div className="chart-container">
             <div className="pie-chart">

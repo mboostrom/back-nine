@@ -26,7 +26,7 @@ const GolfCourseForm = (props) => {
 
   return (
     <div>
-      <div>
+      <div className="add-round">
         <h1>Add a Golf Course</h1>
       </div>
       <ErrorList errors={props.errors} />

@@ -83,3 +83,10 @@ input[type="radio"]:checked:after {
   visibility: visible;
   border: 2px solid white;
 }
+
+@media (max-width: 990px) {
+  .add-round h1{
+    color: #374108;
+    font-size: 1.75em;
+  }
+}
