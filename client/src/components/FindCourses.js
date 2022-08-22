@@ -33,7 +33,7 @@ const FindCourses = (props) => {
 
   return (
     <div className="map">
-      <LoadScript googleMapsApiKey="AIzaSyC8Rx7YYgXLwBjKuwydgTMgQycEJOHpNzY" libraries={libraries}>
+      <LoadScript googleMapsApiKey="AIzaSyD3KGnboB284ixjS_WITauqlV7i_nqSNDc" libraries={libraries}>
         <div className="search">
           <SearchMap panTo={panTo}/>
         </div>
